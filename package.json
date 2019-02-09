@@ -1,7 +1,7 @@
 {
   "name": "g-wave",
   "version": "1.0.0",
-  "description": "音频WAVE波形频谱",
+  "description": "音频WAVE波形频谱动画特效oo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "homepage": "https://icey830.github.io/g-wave/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icey830/g-wave.git"
   }
 }

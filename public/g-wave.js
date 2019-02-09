@@ -1,13 +1,13 @@
 window.onload = function elv_tjt_elv() {
     var elv_pp_canvas = document.getElementById('elv_yp_canvas');
-    var elv_pp_video = document.getElementById('elv_yp_wave');
+    var elv_pp_video = document.getElementById('elv_yp_video');
     var aaaa = document.getElementById('aaaa');
     var elv_pp_context = elv_pp_canvas.getContext("2d");
     var img = new Image();
-    img.src = "index.jpg";
+    img.src = "22.png";
     var grad = "";
     var elv_pp_width = document.body.offsetWidth;
-    var elv_pp_l = 10;
+    var elv_pp_l = 5;
     var elv_pp_height = document.body.offsetHeight;
     var elv_pp_x = elv_pp_height - 10;
     elv_pp_canvas.width = elv_pp_width;
@@ -21,7 +21,7 @@ window.onload = function elv_tjt_elv() {
     var ping = 250 / 133;
     var juzhong = 0;
 	var r=0,g=0,b=0;
-	var rgb = "#FFFFFF";
+	var rgb = "#15d2fd";
     var elv_pp_AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
     var elv_pp_AudioContext_video = new elv_pp_AudioContext();
     var elv_pp_fen = elv_pp_AudioContext_video.createAnalyser();
@@ -70,9 +70,9 @@ window.onload = function elv_tjt_elv() {
             elv_pp_context.fillStyle = grad;
             elv_pp_context.fillRect(i / 2 * elv_pp_l + kuan - elv_pp_l / 2 / 2, elv_pp_cen - 50 - bbl, elv_pp_l, bbl);
             elv_pp_context.beginPath();
-            elv_pp_context.fillStyle = rgb;
+            elv_pp_context.fillStyle = rgb; //上方指针内颜色
             elv_pp_context.fillRect(i / 2 * elv_pp_l + kuan, elv_pp_cen - 50 - bbl, elv_pp_l / 2, bbl);
-            elv_pp_context.fillStyle = grad;
+            elv_pp_context.fillStyle = grad; //下方指针颜色
             elv_pp_context.fillRect(i / 2 * elv_pp_l + kuan - elv_pp_l / 2 / 2, elv_pp_cen + 50, elv_pp_l, bbl);
             elv_pp_context.beginPath();
             elv_pp_context.fillStyle = rgb;
@@ -88,7 +88,8 @@ window.onload = function elv_tjt_elv() {
             //elv_pp_context.lineTo(i*elv_pp_l,elv_pp_x-(elv_pp_Data[i+4]-150)*2);
         }
 		elv_pp_context.beginPath();
-		elv_pp_context.fillStyle = "#FFF";
+		elv_pp_context.fillStyle = "rgba(230, 216, 216,1)";
+        elv_pp_context.shadowColor = "rgba(230, 216, 216,0.6)";
         elv_pp_context.fillText(elv_pp_c_jiet, juzhong * elv_pp_l + kuan, elv_pp_cen + bbl + 15);
         elv_pp_context.stroke();
         requestAnimationFrame(amoe);
@@ -106,19 +107,20 @@ window.onload = function elv_tjt_elv() {
     function canvassx() {
         elv_pp_context.beginPath();
         elv_pp_context.fillStyle = rgb;
-        elv_pp_context.strokeStyle =rgb;
-        elv_pp_context.shadowOffsetX = 0;
-        elv_pp_context.shadowOffsetY = 0;
+
+        elv_pp_context.strokeStyle = "rgba(130, 130, 130,0.8)";
+        elv_pp_context.shadowOffsetX = 10;
+        elv_pp_context.shadowOffsetY = 120; //指针的背影
         elv_pp_context.shadowBlur = 20;
         elv_pp_context.shadowColor = rgb;
-        elv_pp_context.shadowWidth = 3;
-        elv_pp_context.lineWidth = 10;
-        elv_pp_context.font = "50px Arial";
+        elv_pp_context.shadowWidth = 15;
+        elv_pp_context.lineWidth = 20;
+        elv_pp_context.font = "70px Arial";
         elv_pp_context.textAlign = "center";
-        grad = elv_pp_context.createLinearGradient(0, 0, 140, 0);
-        grad.addColorStop(0, 'rgba(255, 255, 255,0)'); // 红
+        grad = elv_pp_context.createLinearGradient(2, 179, 228, 1); //这里可以调整指针为渐变色
+        grad.addColorStop(1, 'rgba(2, 179, 228,1)'); // 红  这里开始下面三行可以更改指针颜色
         grad.addColorStop(0.5, rgb); // 绿
-        grad.addColorStop(1, 'rgba(255, 255, 255,0)');
+        grad.addColorStop(1, 'rgba(232, 47, 98,1)');
     }
 
 
@@ -139,7 +141,7 @@ window.onload = function elv_tjt_elv() {
         var elv_pp_top = new Array();
         elv_pp_top = elv_yp_canvas.getBoundingClientRect().top.toString().split(".");
         elv_pp_top = elv_pp_mousePosition(event).y - elv_yp_canvas.getBoundingClientRect().top + parseFloat("0." + elv_pp_top[1]) - document.body.scrollTop;
-        if (elv_pp_left > kuan && elv_pp_left < kuan + 170 * 5 && elv_pp_top > elv_pp_cen - 25 && elv_pp_top < elv_pp_cen + 25) {
+        if (elv_pp_left > kuan && elv_pp_left < kuan + 170 * 6 && elv_pp_top > elv_pp_cen - 25 && elv_pp_top < elv_pp_cen + 25) {
             elv_pp_zhizhen++;
         }
         if (elv_pp_zhizhen != 0) {
